@@ -11,6 +11,8 @@ type HeroFullProps = {
   imageAlt?: string;
   /** Looping video for the media column — takes precedence over `image`. */
   video?: { mobile: string; desktop: string; poster?: string };
+  /** Content overlaid on the media (positioned by the caller, e.g. a corner label). */
+  mediaOverlay?: React.ReactNode;
 };
 
 /**
@@ -28,6 +30,7 @@ export function HeroFull({
   image,
   imageAlt = "",
   video,
+  mediaOverlay,
 }: HeroFullProps) {
   return (
     <section className="pt-8 pb-8">
@@ -43,7 +46,7 @@ export function HeroFull({
             </div>
           </div>
 
-          <div className="order-2 md:order-0 md:h-[calc(100svh-10rem)]">
+          <div className="relative order-2 overflow-hidden md:order-0 md:h-[calc(100svh-10rem)]">
             {video ? (
               <BgVideo
                 mobile={video.mobile}
@@ -60,6 +63,7 @@ export function HeroFull({
                 priority
               />
             )}
+            {mediaOverlay}
           </div>
         </div>
       </Container>

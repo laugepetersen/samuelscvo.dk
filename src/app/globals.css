@@ -183,3 +183,18 @@
   line-height: 1.2;
   text-transform: uppercase;
 }
+
+/* Blinking typewriter caret (launch-party date overlay). Hard on/off blink. */
+@keyframes caret-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+@utility caret-blink {
+  animation: caret-blink 1.06s infinite;
+}

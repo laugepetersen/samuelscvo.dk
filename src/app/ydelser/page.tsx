@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   description: "Klip, skæg og priser hos Samuel's i Valby.",
 };
 
-// Page-specific placeholder copy (to be replaced).
+// Page copy (Danish, Samuel's brand voice).
 const HERO_INTRO =
-  "In tempor lorem id ornare sem blandit. Sit amet viverra eu aliquam. Et sed cursus libero ac mi nisi. Consectetur ut ut auctor vel rutrum. Iaculis nisl magnis enim ligula luctus eleifend. Est cursus etiam orci amet ullamcorper orci elit.";
+  "Klip, skæg og alt derimellem — taget med tid, omtanke og en skarp hånd. Fra det klassiske combo til en hurtig fresh-up finder du den ydelse, der passer til dig. Ærlige priser, skarpt resultat.";
 
 export default function YdelserPage() {
   return (
@@ -23,7 +23,7 @@ export default function YdelserPage() {
         imageAlt="Mand bag rattet i en åben veteranbil i sollys"
       />
       <ServicesSection services={services} />
-      <NewsletterBanner heading="Tilmeld dig og få 50 kr. gratis til næste klip som medlem." />
+      <NewsletterBanner heading="Bliv medlem. Få 50 kr. til næste klip – på husets regning." />
     </>
   );
 }

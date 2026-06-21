@@ -10,12 +10,12 @@ export const metadata: Metadata = {
     "Mød holdet bag Samuel's — barbershoppen i Valby. Vores barbers og historie.",
 };
 
-// Page-specific placeholder copy (to be replaced).
+// Page copy (Danish, Samuel's brand voice).
 const HERO_INTRO =
-  "In tempor lorem id ornare sem blandit. Sit amet viverra eu aliquam. Et sed cursus libero ac mi nisi. Consectetur ut ut auctor vel rutrum. Iaculis nisl magnis enim ligula luctus eleifend. Est cursus etiam orci amet ullamcorper orci elit.";
+  "Samuel's er ikke bare endnu en barbershop. Det er et sted i Valby, hvor håndværk, fællesskab og karakter mødes — bygget for mænd, der sætter pris på detaljen: det skarpe klip, den gode samtale og følelsen af at høre til. Velkommen ind.";
 
 const BARBERS_INTRO =
-  "In tempor lorem id ornare sem blandit. Sit amet viverra eu aliquam. Et sed cursus libero ac mi nisi.";
+  "Mød holdet bag stolen. Erfarne hænder, skarpe øjne og altid tid til en god samtale — det er dem, der får dig til at føle dig hjemme.";
 
 export default function OmOsPage() {
   return (
@@ -26,12 +26,8 @@ export default function OmOsPage() {
         image="/images/om-os-hero.webp"
         imageAlt="Mand i oversized jakkesæt og solbriller foran en spejlende glasfacade"
       />
-      <BarbersSection
-        title="Vores barbers"
-        intro={BARBERS_INTRO}
-        barbers={barbers}
-      />
-      <NewsletterBanner heading="Få 50 kr. til dit første klip – det på huset." />
+      <BarbersSection title="Mød holdet" intro={BARBERS_INTRO} barbers={barbers} />
+      <NewsletterBanner heading="Bliv medlem. Få 50 kr. til næste klip – på husets regning." />
     </>
   );
 }
