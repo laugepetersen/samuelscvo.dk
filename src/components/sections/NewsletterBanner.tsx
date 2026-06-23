@@ -1,7 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { BgVideo } from "@/components/ui/bg-video";
-import { Button } from "@/components/ui/button";
 import { ClubSamuels } from "@/components/ui/logo";
+import { SignupButton } from "@/components/ui/signup-button";
 import { Reveal } from "@/components/ui/reveal";
 
 /**
@@ -25,9 +25,9 @@ export function NewsletterBanner({ heading }: { heading: string }) {
           <div className="relative z-10 px-[6vw] text-center text-white">
             <ClubSamuels className="relative -left-3 mb-1" />
             <h2 className="max-w-lg h3 montaga md:h2 mb-6">{heading}</h2>
-            <Button type="button" variant="hvid" className="px-12">
+            <SignupButton variant="hvid" className="px-12">
               Ja, tilmeld mig
-            </Button>
+            </SignupButton>
           </div>
         </Reveal>
       </Container>

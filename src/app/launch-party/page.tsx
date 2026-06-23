@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { HeroFull } from "@/components/heroes/HeroFull";
-import { Button } from "@/components/ui/button";
+import { SignupButton } from "@/components/ui/signup-button";
 import { Typewriter } from "@/components/ui/typewriter";
 import { fullAddress } from "@/data/site";
 
@@ -46,9 +46,9 @@ export default function LaunchPartyPage() {
         dit første klip de næste par måneder.
       </h2>
       <p className="max-w-[460px] text-body text-brown">{INTRO}</p>
-      <Button type="button" className="w-full px-10 sm:w-auto">
+      <SignupButton className="w-full px-10 sm:w-auto">
         Få 50 kr. til første klip
-      </Button>
+      </SignupButton>
     </HeroFull>
   );
 }

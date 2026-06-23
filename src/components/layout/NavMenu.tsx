@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 // The panel (AnimatePresence child) is the single animation driver; the list
@@ -40,15 +40,36 @@ type NavMenuProps = {
 
 export function NavMenu({ open, onOpenChange }: NavMenuProps) {
   const [top, setTop] = useState(64); // viewport offset = header bottom
+  const panelRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
   const mounted = useIsHydrated();
 
-  // Lock body scroll (compensating for the scrollbar), Esc to close.
+  // Lock the page while the menu is open. `overflow: hidden` covers desktop
+  // wheel/scrollbar, but iOS Safari ignores it for touch — so also cancel
+  // touchmove everywhere except inside the panel when its content actually
+  // overflows (the panel's `overscroll-contain` keeps that scroll from chaining
+  // back to the page). Keeping the page from moving also keeps the measured
+  // `top` offset aligned with the sticky header — no announcement-bar-sized gap.
+  // Esc closes.
   useEffect(() => {
     if (!open) return;
     const scrollbar = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = "hidden";
     if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`;
+
+    const onTouchMove = (e: TouchEvent) => {
+      const panel = panelRef.current;
+      if (
+        panel &&
+        panel.contains(e.target as Node) &&
+        panel.scrollHeight > panel.clientHeight
+      ) {
+        return; // let an overflowing panel scroll itself
+      }
+      e.preventDefault(); // otherwise the page must not move
+    };
+    document.addEventListener("touchmove", onTouchMove, { passive: false });
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onOpenChange(false);
     };
@@ -56,6 +77,7 @@ export function NavMenu({ open, onOpenChange }: NavMenuProps) {
     return () => {
       document.body.style.overflow = "";
       document.body.style.paddingRight = "";
+      document.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("keydown", onKey);
     };
   }, [open, onOpenChange]);
@@ -112,6 +134,7 @@ export function NavMenu({ open, onOpenChange }: NavMenuProps) {
 
                 <motion.nav
                   key="panel"
+                  ref={panelRef}
                   variants={navVariants}
                   initial="closed"
                   animate="open"
@@ -120,7 +143,7 @@ export function NavMenu({ open, onOpenChange }: NavMenuProps) {
                   style={{ top, bottom: 0 }}
                   aria-label="Hovedmenu"
                   className={cn(
-                    "fixed z-30 flex flex-col overflow-y-auto bg-white",
+                    "fixed z-30 flex flex-col overflow-y-auto overscroll-contain bg-white",
                     "inset-x-0 gap-10 px-4 py-8",
                     "md:inset-x-auto md:right-0 w-[calc(100%+1px)] md:w-[460px] md:gap-0 border-l border-brown md:p-8",
                     "md:justify-between",

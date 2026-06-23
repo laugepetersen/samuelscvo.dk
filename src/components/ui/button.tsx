@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils"
  * `buttonVariants(...)` directly.
  */
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center border whitespace-nowrap font-medium transition-colors outline-none select-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 active:translate-y-px disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex shrink-0 cursor-pointer items-center justify-center border whitespace-nowrap font-medium transition-colors outline-none select-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 active:translate-y-px disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {

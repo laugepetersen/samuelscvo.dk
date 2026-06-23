@@ -19,9 +19,19 @@ import { NavMenu } from "./NavMenu";
  * so this single switch recolours all of them.
  */
 export function Header() {
-  const isHome = usePathname() === "/";
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [navOpen, setNavOpen] = useState(false);
+  const [prevPathname, setPrevPathname] = useState(pathname);
   const [scrolled, setScrolled] = useState(false);
+
+  // Close the menu on any client navigation — the logo (home), the announcement
+  // bar (launch-party) or any other off-menu link. Render-phase comparison (not
+  // an effect) so the close commits in the same render; no setState-in-effect.
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setNavOpen(false);
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);

@@ -4,6 +4,7 @@ import "./globals.css";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { KlaviyoScript } from "@/components/analytics/KlaviyoScript";
 
 const montaga = Montaga({
   weight: "400",
@@ -44,6 +45,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <KlaviyoScript />
       </body>
     </html>
   );
