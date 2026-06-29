@@ -5,6 +5,7 @@ import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { KlaviyoScript } from "@/components/analytics/KlaviyoScript";
+import { Analytics } from "@vercel/analytics/next";
 
 const montaga = Montaga({
   weight: "400",
@@ -46,6 +47,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <KlaviyoScript />
+        <Analytics />
       </body>
     </html>
   );
