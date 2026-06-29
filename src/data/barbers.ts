@@ -8,10 +8,7 @@ export type Barber = {
 
 export const barbers: Barber[] = [
   { name: "Samuel", role: "Senior", image: "/placeholder.png" },
-  { name: "Samuel", role: "Senior", image: "/placeholder.png" },
-  { name: "Samuel", role: "Senior", image: "/placeholder.png" },
-  { name: "Samuel", role: "Senior", image: "/placeholder.png" },
-  { name: "Samuel", role: "Senior", image: "/placeholder.png" },
-  { name: "Samuel", role: "Senior", image: "/placeholder.png" },
-  { name: "Samuel", role: "Senior", image: "/placeholder.png" },
+  { name: "Mert", role: "Junior", image: "/placeholder.png" },
+  { name: "TBA", role: "Senior", image: "/placeholder.png" },
+  { name: "TBA", role: "Senior", image: "/placeholder.png" },
 ];

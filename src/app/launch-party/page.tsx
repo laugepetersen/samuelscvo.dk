@@ -2,16 +2,20 @@ import type { Metadata } from "next";
 import { HeroFull } from "@/components/heroes/HeroFull";
 import { SignupButton } from "@/components/ui/signup-button";
 import { Typewriter } from "@/components/ui/typewriter";
-import { fullAddress } from "@/data/site";
+import { fullAddress, site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Launch Party — Samuel's",
-  description: "1. juli åbner Samuel's i Valby — du er inviteret.",
+  description: "13. juli åbner Samuel's i Valby — du er inviteret.",
 };
+
+// Launch date as DD.MM.YYYY (e.g. "13.07.2026"), derived from the source of truth.
+const [ly, lm, ld] = site.launch.date.split("-");
+const LAUNCH_DATE = `${ld}.${lm}.${ly}`;
 
 // Page copy (Danish, Samuel's brand voice).
 const INTRO =
-  "1. juli slår vi dørene op i Skolegade 9. Kom forbi til dit første klip, en kold én i hånden og stemningen, når en ny nabolagsbarber finder sin plads. Ingen venteliste, ingen dikkedarer — bare klip, karakter og fællesskab fra dag ét. Vi ses i Valby.";
+  "13. juli slår vi dørene op i Skolegade 9A. Kom forbi til dit første klip, en kold én i hånden og stemningen, når en ny nabolagsbarber finder sin plads. Ingen venteliste, ingen dikkedarer — bare klip, karakter og fællesskab fra dag ét. Vi ses i Valby.";
 
 export default function LaunchPartyPage() {
   return (
@@ -31,7 +35,7 @@ export default function LaunchPartyPage() {
             holdMs={3500}
             lines={[
               {
-                text: "01.07.2026",
+                text: LAUNCH_DATE,
                 className: "h2 condensed leading-none whitespace-nowrap md:display",
                 typeMs: 190,
               },
@@ -42,8 +46,8 @@ export default function LaunchPartyPage() {
       }
     >
       <h2 className="lead condensed max-w-[360px] text-brown">
-        1. juli åbner Samuel&rsquo;s og du inviteret! Vi giver 50 kr. gratis til
-        dit første klip de næste par måneder.
+        13. juli åbner Samuel&rsquo;s og du er inviteret! Vi giver 50 kr. gratis
+        til dit første klip de næste par måneder.
       </h2>
       <p className="max-w-[460px] text-body text-brown">{INTRO}</p>
       <SignupButton className="w-full px-10 sm:w-auto">

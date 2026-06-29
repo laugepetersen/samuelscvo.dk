@@ -20,7 +20,7 @@ export const site = {
 
   /** Launch countdown badge (top-left). Date is in Danish time (Europe/Copenhagen). */
   launch: {
-    date: "2026-07-01", // launch day (YYYY-MM-DD), Copenhagen
+    date: "2026-07-13", // launch day (YYYY-MM-DD), Copenhagen — Mandag d. 13. juli
     label: "Launch Party", // line 2 while counting down
     openText: "We're open", // line 1 once the launch day has arrived
   },
@@ -32,20 +32,20 @@ export const site = {
   },
 
   contact: {
-    phone: "+45 00 00 00 00",
-    phoneHref: "tel:+4500000000",
-    email: "hej@samuelscvo.dk",
-    emailHref: "mailto:hej@samuelscvo.dk",
+    phone: "+45 20 64 02 22",
+    phoneHref: "tel:+4520640222",
+    email: "contact@samuelscvo.dk",
+    emailHref: "mailto:contact@samuelscvo.dk",
   },
 
   openingHours: [
-    { days: "Hverdage", hours: "09.00 – 17.00" },
-    { days: "Lørdage", hours: "10.00 – 14.00" },
-    { days: "Søndage", hours: "10.00 – 14.00" },
+    { days: "Hverdage", hours: "10.00 – 18.00" },
+    { days: "Lørdage", hours: "10.00 – 16.00" },
+    { days: "Søndage", hours: "Lukket" },
   ] satisfies OpeningHours[],
 
   address: {
-    street: "Skolegade 9",
+    street: "Skolegade 9A",
     city: "2500 Valby",
   },
 
